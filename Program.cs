@@ -12,13 +12,13 @@ namespace LibraryTerminal
         static void Main(string[] args)
         {
             String filePath = "LibratyTerminalTextDeposit.txt";
-            
+
             Library library = new Library();
             Admin admin = new Admin();
             //Admin.library = library;
             Library.writeToFile(filePath);
             Library.ReadFromFile(filePath);
-           
+
 
             string name = " ";
             string userResponse = "";
@@ -33,13 +33,13 @@ namespace LibraryTerminal
             name = Console.ReadLine();
 
             Console.WriteLine("Please Enter Your Account Number");
-            bool accountN= int.TryParse(Console.ReadLine(), out accountNumber );
+            bool accountN = int.TryParse(Console.ReadLine(), out accountNumber);
 
             Console.WriteLine("Welcome " + name + " user # " + accountNumber);
-            selection:
+        selection:
             Console.WriteLine("What would you like to do? (1) List All Books (2) Search (3) Return a Book");
             int choice = int.Parse(Console.ReadLine());
-            start:
+        start:
             if (choice == 1)
             {
                 library.displayBooks();
@@ -109,7 +109,7 @@ namespace LibraryTerminal
 
                     case "2":
                     case "AUTHOR":
-                        AuthorName:
+                    AuthorName:
                         Console.WriteLine("Would you like to check the available authors in our Library? (y/n)");
                         string yes = Console.ReadLine();
                         if (yes == "y")
@@ -146,7 +146,7 @@ namespace LibraryTerminal
 
                     case "3":
                     case "TITLE":
-                        title:
+                    title:
                         Console.WriteLine("Would you like to see all the books in the library?(Enter y/n)");
                         string y = Console.ReadLine();
 
@@ -154,12 +154,12 @@ namespace LibraryTerminal
                         {
                             library.displayBooks();
                             Console.WriteLine("Enter Book Title or Book Number:");
-                             userSelectedBook = Console.ReadLine();
+                            userSelectedBook = Console.ReadLine();
                         }
                         else
                             Console.WriteLine("Enter the book Title:");
 
-                         userSelectedBook = Console.ReadLine();
+                        userSelectedBook = Console.ReadLine();
                         if (string.IsNullOrEmpty(userSelectedBook))
                             Console.WriteLine("Enter valid data");
                         else
@@ -194,15 +194,16 @@ namespace LibraryTerminal
                     default:
                         Console.WriteLine("OOPS! Curently we do not have {0}. Would you like to seach another book?", seachCriteria);
                         break;
-                } }
+                }
+            }
             else if (choice == 3)
             {
                 Console.WriteLine("Enter Book Title or Book Number");
                 string returnBook = Console.ReadLine();
                 library.submitBook(returnBook);
             }
-                    Console.WriteLine("Do you want to search another book? (yes/no)");
-                    userResponse = Console.ReadLine().ToLower();
+            Console.WriteLine("Do you want to search another book? (yes/no)");
+            userResponse = Console.ReadLine().ToLower();
             if (userResponse == "yes")
                 goto selection;
 
@@ -211,12 +212,3 @@ namespace LibraryTerminal
         }
     }
 }
-
-
-            
-                
-                       
-                    
-    
-
-
